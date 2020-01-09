@@ -1,3 +1,0 @@
-[submodule "vagrant/identidock"]
-	path = vagrant/identidock
-	url = https://github.com/Avis20/identidock.git

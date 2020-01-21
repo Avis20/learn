@@ -1,11 +1,7 @@
 ---
 ansible:
   image: generik/ansible
-  # command: ["ansible", "--help"]
-  # command: ["ls", "-l", "/root/.ssh/"]
   command: "ansible-playbook identidock.yml -u vagrant"
-  # command: "ssh vagrant@3.3.3.2 -i /root/.ssh/id_rsa"
-  # command: "sleep 1000"
   volumes:
     - ../id_rsa_keys/:/root/.ssh/:rw
     - ./identidock.yml:/ansible/identidock.yml

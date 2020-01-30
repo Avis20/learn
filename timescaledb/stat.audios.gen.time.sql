@@ -53,6 +53,7 @@ from generate_series(0, 2000000);
 SELECT count( distinct(filial_id) ) FROM stat.audios_hyper
 WHERE date_trunc('month', ts_playing)::date = '2019-10-01'
 
+SELECT drop_chunks(interval '24 hours', 'stat.audios_hyper');
 
 -- GROUP BY filial_id
 -- 28.10.2019 23:40:41

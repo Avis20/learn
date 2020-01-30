@@ -10,18 +10,14 @@ CREATE TABLE stat.filial_activity2 (
     CONSTRAINT filial_activity_filial_key_datetime_project2 UNIQUE(filial_key, ts_datetime, project_alias)
 );
 
-
 CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 SELECT create_hypertable('stat.filial_activity2', 'ts_datetime', chunk_time_interval => interval '1 hour');
-
 
 select count(*) from stat.filial_activity2;
 select pg_size_pretty(pg_table_size('stat.filial_activity2')) as table_size;
 select pg_size_pretty(pg_indexes_size('stat.filial_activity2')) as index_size;
 
-
 SELECT * FROM hypertable_relation_size_pretty('stat.filial_activity2');
-
 
 insert into stat.filial_activity2
 select 

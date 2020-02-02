@@ -5,13 +5,15 @@ services:
     build: ./identiproxy/
     container_name: identiproxy
     ports:
-      - "8000:80"
+      - "80:80"
     links:
       - "identidock"
 
   identidock:
     build: ./identidock/
     container_name: identidock
+    environment:
+      RUN: PROD
     volumes:
       - ./identidock/app:/app
     links:
@@ -25,3 +27,11 @@ services:
   redis:
     image: redis:3.0
     container_name: identiredis
+
+  logspout:
+    image: amouat/logspout-logstash:1.0
+    container_name: identilogspout
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8000:80"

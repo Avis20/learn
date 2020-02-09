@@ -40,10 +40,29 @@ services:
     command: logstash://logstash:5000
 
   logstash:
-    image: logstash:6.8.6
+    image: logstash:2.3.4
     container_name: identilogstash
     volumes:
-      - ./identilogs/logstash.conf:/etc/logstash.conf
+      - ./identilogs/logstash.2.3.4.conf:/etc/logstash.conf
     environment:
-      LOGSPUT: ignore
+      LOGSPOUT: ignore
+    links:
+      - "elasticsearch"
     command: -f /etc/logstash.conf
+
+  kibana:
+    image: kibana:4.6.6
+    container_name: identikibana
+    environment:
+      LOGSPOUT: ignore
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+    links:
+      - "elasticsearch"
+    ports:
+      - "5601:5601"
+    
+  elasticsearch:
+    image: elasticsearch:2.4.0
+    container_name: identielastic
+    environment:
+      LOGSPOUT: ignore

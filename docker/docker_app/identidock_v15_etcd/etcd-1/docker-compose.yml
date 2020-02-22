@@ -12,6 +12,6 @@ services:
       - ./start-coreos-etcd.sh:/start-coreos-etcd.sh
     command: /start-coreos-etcd.sh
 
-  skydns:
-    image: skynetservices/skydns:2.5.2a
-    env_file: .env
+  # skydns:
+  #   image: skynetservices/skydns:2.5.2a
+  #   env_file: .env

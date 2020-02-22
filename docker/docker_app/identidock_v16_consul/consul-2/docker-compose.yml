@@ -1,0 +1,18 @@
+version: '3'
+services:
+
+  consul-2:
+    image: gliderlabs/consul
+    container_name: consul-2
+    ports:
+      - "8300:8300"
+      - "8301:8301"
+      - "8301:8301/udp"
+      - "8302:8302"
+      - "8400:8400"
+      - "8500:8500"
+      - "3.3.3.3:53:8600/udp"
+    env_file: .env
+    volumes:
+      - ./start-consul-agent.sh:/start-consul-agent.sh
+    entrypoint: /start-consul-agent.sh

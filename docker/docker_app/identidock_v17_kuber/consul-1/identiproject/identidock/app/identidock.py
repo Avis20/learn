@@ -13,8 +13,6 @@ default_name = 'avis'
 def main_page():
     name = default_name
 
-    print("HELLO!!!", flush=True)
-
     if request.method == 'POST':
       name = html.escape( request.form['name'], quote=True );
 

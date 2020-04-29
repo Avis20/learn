@@ -68,3 +68,10 @@ sub send_request {
     my $str = clean_str($res->decoded_content);
     return $str;
 }
+
+sub clean_str {
+    my $str = shift;
+    $str =~ s/[\t\n]//g;
+    $str =~ s/\\\"//g;
+    return $str;
+}

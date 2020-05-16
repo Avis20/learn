@@ -58,6 +58,12 @@ foreach my $number ( 6,7,0,1,2,3,4,5 ){
     next unless defined $total{$number}->{'sum'};
     printf("%s\n", $total{$number}->{'sum'});
 }
-close $fh;
 
+foreach my $number ( 6,7,0,1,2,3,4,5 ) {
+    next unless defined $total{$number}->{'sum'};
+    printf("%s\t", $total{$number}->{'sum'});
+}
+say;
+
+close $fh;
 exit;

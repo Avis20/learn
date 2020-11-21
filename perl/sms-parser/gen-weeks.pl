@@ -8,14 +8,6 @@ my $year = 2020;
 my @start_week = ('02-15/02-22');
 my $end_week = $ARGV[0] || 40;
 
-my $end;
-if ( $ARGV[0] ) {
-    my ( $year, $month, $day ) = split('-', $ARGV[0]);
-    $end = DateTime->new( year => $year, month => $month, day => $day );
-} else {
-    $end = DateTime->now();
-}
-
 my ($date) = split('/', $start_week[0]);
 my ( $month, $day ) = split('-', $date);
 

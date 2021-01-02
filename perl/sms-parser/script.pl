@@ -48,11 +48,11 @@ while (<$fh>) {
     my $date_send = DateTime->from_epoch( epoch => $date_send_epoch/1000 )->set_time_zone('Europe/Moscow');
     next if $date_send < $date_start;
     next if $date_send > $date_end;
-    # next unless m/(Баланс|Карта)/;
+    next unless m/(Баланс|Карта)/;
 
     my $wday = $wdays[$date_send->wday()-1];
-    # my (undef, $s1, $s2) = m/(Платёж|Оплата|Покупка|Выдача|Снятие) ([0-9]( ?[0-9])+)/;
-    my (undef, $s1, $s2) = m/(зачислено) ([0-9]( ?[0-9])+)/;
+    my (undef, $s1, $s2) = m/(Платёж|Оплата|Покупка|Выдача|Снятие) ([0-9]( ?[0-9])+)/;
+    # my (undef, $s1, $s2) = m/(зачислено) ([0-9]( ?[0-9])+)/; # Для зп
     my $sum = $s1;
     $sum =~ s/\W//g;
     warn $date_send.' -- '.$wday. " --- ".( $sum >= 1000 ? sprintf($COLOR{green}, $sum) : $sum )."\n\t".$_."\n" if $DEBUG;

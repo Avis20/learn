@@ -1,20 +1,150 @@
 #!/usr/bin/env python3
 
-from flask import Flask, render_template, request
-
-app = Flask(__name__)
-
-
-@app.route('/')
-def home():
-    kwargs = {}
-    kwargs['thing'] = request.args.get('thing')
-    kwargs['height'] = request.args.get('height')
-    kwargs['color'] = request.args.get('color')
-    return render_template('home.html', **kwargs)
+import subprocess
+import multiprocessing as mp
+import time
+import os
 
 
-app.run(debug=True)
+def whoami(name):
+    print("Я %s, PID=%s" % (name, os.getpid()))
+
+
+def loop(name):
+    whoami(name)
+    start = 1
+    stop = 1000
+    for n in range(start, stop):
+        print("\tNumber %s of %s; parent pid=%s" % (n, stop, os.getppid()))
+        time.sleep(start)
+
+
+if __name__ == '__main__':
+    whoami("основной процесс main")
+    proc = mp.Process(target=loop, args=("loopy", ))
+    proc.start()
+    time.sleep(3)
+    print("I'll be back -_-")
+    subprocess.call(['kill', str(os.getpid())])
+
+
+# import multiprocessing as mp
+# import os
+# import time
+
+
+# def do_this(name):
+#     whoami(name)
+
+
+# def whoami(name):
+#     time.sleep(5)
+#     print("Процесс %s говорит: '%s'" % (os.getpid(), name))
+
+
+# def loop(name)
+
+
+# if __name__ == '__main__':
+#     whoami('Я основная программа main')
+#     for i in range(4):
+#         proc = mp.Process(target=do_this, args=("Я функция %s" % i, ))
+#         proc.start()
+#     print("Конец main")
+
+
+# import subprocess
+
+# result = subprocess.call('date -u', shell=True)
+# print(result)
+
+# print('result=', result)
+
+# import os
+# print(os.getcwd())
+
+# import os
+
+# file_name = './text.txt'
+# new_file_name = file_name + '.new.txt'
+
+# with open(file_name, 'wt') as file:
+#     file.write('hello\n')
+
+# print(os.symlink(file_name, new_file_name))
+# # None
+
+# print(os.path.islink(new_file_name))
+# # True
+
+# print(os.remove(new_file_name))
+
+# import os
+
+# file_name = './text.txt'
+# new_file_name = file_name + 'new.txt'
+
+# with open(file_name, 'wt') as file:
+#     file.write('hello\n')
+
+# print(os.rename(file_name, new_file_name))
+# # None
+
+# print(os.path.exists(file_name))
+# # False
+
+# print(os.path.exists(new_file_name))
+# # True
+
+# import os
+# import shutil
+
+# file_name = './text.txt'
+# new_file_name = file_name + 'new.txt'
+
+# with open(file_name, 'wt') as file:
+#     file.write('hello\n')
+
+# shutil.copy(file_name, new_file_name)
+# print(os.path.exists(new_file_name))
+
+# import os
+
+# file_name = './text.txt'
+
+# with open(file_name, 'wt') as file:
+#     file.write('hello\n')
+
+# print("File exists? ", os.path.exists(file_name))
+# # File exists?  True
+# print("File exists? ", os.path.exists('alalala'))
+# # File exists?  False
+
+# print("is file?", os.path.isfile(file_name))
+# # is file? True
+
+# print("is file?", os.path.isfile('.'))
+# # is file? False
+
+# print("is dir?", os.path.isdir('.'))
+# # is dir? True
+
+
+# from flask import Flask, render_template, request
+
+# app = Flask(__name__)
+
+
+# @app.route('/')
+# def home():
+#     kwargs = {}
+#     kwargs['thing'] = request.args.get('thing')
+#     kwargs['height'] = request.args.get('height')
+#     kwargs['color'] = request.args.get('color')
+#     return render_template('home.html', **kwargs)
+
+
+# app.run(debug=True)
 
 '''
 import sys

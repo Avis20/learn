@@ -1,5 +1,189 @@
 #!/usr/bin/env python3
 
+
+'''
+if __name__ == '__main__':
+
+    array = []
+    x, y, z, n = (1, 1, 2, 3)
+
+    for i in range(0, x + 1):
+        for j in range(0, y + 1):
+            for k in range(0, z + 1):
+                if i + j + k != n:
+                    array.append([i, j, k])
+    print(array)
+
+'''
+
+# from datetime import date, timedelta
+
+# brightday = date(1995, 6, 15)
+# print(brightday)
+# # 1995-06-15
+
+# ten_k = timedelta(days=10000)
+# print(brightday + ten_k)
+# # 2022-10-31
+
+
+# 1995-06-15
+
+# brightday = date(1995, 6, 15)
+
+# test = time.localtime(brightday)
+
+
+# print(brightday)
+# 1995-06-15
+
+
+'''
+from random import choice
+from time import sleep
+from datetime import datetime
+import os
+import multiprocessing as mp
+
+
+def to_sleep(time):
+    print("Process %s sleep %s" % (os.getpid(), time))
+    sleep(time)
+
+if __name__ == '__main__':
+    sleep_time = (1, 2, 3, 4, 5)
+    now = datetime.now()
+    print("Start =", now.hour, now.minute, now.second)
+    for i in range(1, 4):
+        st = choice(sleep_time)
+        proc = mp.Process(target=to_sleep, args=(st,))
+        proc.start()
+
+print("Stop =", now.hour, now.minute, now.second)
+'''
+
+
+'''
+# from datetime import date
+
+today_string = ''
+with open("today.txt", "rt") as file:
+    today_string = file.read()
+
+print(today_string.split('-'))
+# ['2021', '02', '22']
+'''
+
+'''
+from datetime import date
+
+today = date.today()
+print(today)
+
+with open("today.txt", "wt") as file:
+    file.write(today.isoformat())
+
+'''
+
+# import time
+
+# fmt = "%Y-%m-%d"
+
+# print(time.strptime("2020-01-06", fmt))
+# time.struct_time(tm_year=2020, tm_mon=1, tm_mday=6, tm_hour=0, tm_min=0,
+# tm_sec=0, tm_wday=0, tm_yday=6, tm_isdst=-1)
+
+
+'''
+import time
+
+format = "Сегодня: %A, %B %d %Y. Локальное время: %H:%M:%S%p"
+
+now = time.localtime()
+
+print(time.strftime(format, now))
+# Сегодня: Monday, February 22 2021. Локальное время: 14:39:42PM
+'''
+
+'''
+from time import time, ctime
+
+now = time()
+
+print(now)
+# 1613993148.653525
+
+fnow = ctime(now)
+print(fnow)
+# Mon Feb 22 14:27:51 2021
+'''
+
+'''
+from datetime import date, time, datetime
+
+date = date.today()
+time = time(12)
+
+datetime = datetime.combine(date, time)
+
+print(datetime)
+# 2021-02-22 12:00:00
+'''
+
+'''
+from datetime import datetime
+
+now = datetime.now()
+
+print(now)
+# 2021-02-22 13:57:24.470408
+
+print("day =", now.day, "month =", now.month, "year =", now.year,
+      "hour =", now.hour, "minute =", now.minute, "second =", now.second)
+# day = 22 month = 2 year = 2021 hour = 14 minute = 3 second = 56
+'''
+
+# print("hour =", now.hour, "minute =", now.minute, "second =", now.second)
+# hours = 13 minute = 53 seconds = 0
+
+
+'''
+from datetime import date, timedelta
+
+now = date.today()
+
+print(now)
+# 2021-02-22
+
+one_day = timedelta(days=1)
+
+print(now + one_day)
+# 2021-02-23
+
+print(now + one_day * 7)
+# 2021-03-01
+'''
+
+
+# today = date(2021, 2, 22)
+
+# print(today)
+# # 2021-02-22
+
+# print("day =", today.day, "month =", today.month, "year =", today.year)
+# # day = 22 month = 2 year = 2021
+
+
+# import calendar
+
+# print(calendar.isleap(2021))
+# # False
+
+# print(calendar.isleap(2020))
+# # True
+
+
+'''
 import subprocess
 import multiprocessing as mp
 import time
@@ -26,7 +210,7 @@ if __name__ == '__main__':
     time.sleep(3)
     print("I'll be back -_-")
     subprocess.call(['kill', str(os.getpid())])
-
+'''
 
 # import multiprocessing as mp
 # import os

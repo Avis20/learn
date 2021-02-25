@@ -1,5 +1,23 @@
 #!/usr/bin/env python3
 
+if __name__ == '__main__':
+    n = 5
+    array = [2, 3, 6, 6, 5]
+    max = 0
+    for i in range(n):
+        if array[i] > max:
+            max = array[i]
+
+    prev_max = 0
+    for i in range(n):
+        if array[i] > prev_max and array[i] < max:
+            prev_max = array[i]
+
+    print(prev_max)
+    # n = int(input())
+    # print("n =", n, 'type =', type(n))
+    # array = map(int, input().split())
+    # print("array =", array, 'type =', type(array))
 
 '''
 if __name__ == '__main__':

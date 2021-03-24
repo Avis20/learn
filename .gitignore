@@ -1,3 +1,4 @@
 **/logs
 **/.vagrant
 **/python/my_env
+**/__pycache__

@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+from timeit import repeat
+print(repeat("num = 5; num *= 500", repeat=5))
+
+'''
 if __name__ == '__main__':
     n = 5
     array = [2, 3, 6, 6, 5]
@@ -18,6 +22,7 @@ if __name__ == '__main__':
     # print("n =", n, 'type =', type(n))
     # array = map(int, input().split())
     # print("array =", array, 'type =', type(array))
+'''
 
 '''
 if __name__ == '__main__':

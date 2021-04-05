@@ -1,27 +1,34 @@
-from collections import namedtuple
 
-UserInfo = namedtuple("UserInfo", ["user_name", "email", "age", "gender"])
-print(UserInfo)
-
-
-def get_user_data(data) -> UserInfo:
-    user_name = "test name"
-    age = 25
-    email = "test@test.com"
-    gender = "M"
-    user_info = UserInfo(user_name=user_name, age=age,
-                         email=email, gender=gender)
-    return user_info
+def accept_params(foo, bar, baz):
+    print(locals())
 
 
-def fetch_and_save_user():
-    data = {}
-    user_info = get_user_data(data)
-    print(user_info)
-    print(user_info[0])
-    name, age, email, gender = user_info
-    print(name, age, email, gender)
-    print("name =", user_info.user_name, "age =", user_info.age)
+def accept_kwargs(**kwargs):
+    print(locals())
 
-if __name__ == "__main__":
-    fetch_and_save_user()
+
+if __name__ == '__main__':
+    # Если передать как позиционные, то каждое значение попадет в каждую переменную
+    accept_params('test1', 'test2', 'test3')
+    # {'foo': 'test1', 'bar': 'test2', 'baz': 'test3'}
+
+    # Явная передача каждой переменной
+    accept_params(foo='test1', bar='test2', baz='test3')
+    # {'foo': 'test1', 'bar': 'test2', 'baz': 'test3'}
+
+    # функция принимает только словарь, нужно передовать словарь
+    accept_kwargs(foo='test1', bar='test2', baz='test3')
+    # {'kwargs': {'foo': 'test1', 'bar': 'test2', 'baz': 'test3'}}
+
+    # Если передать списком, то непонятно с чем мачить - будет исключение
+    # accept_kwargs('test1', 'test2', 'test3')
+    # TypeError: accept_kwargs() takes 0 positional arguments but 3 were given
+
+    data = dict(foo='test1', bar='test2', baz='test3')
+    # Если передать только data, то будет передан только 1 позиционный аргумент - ожидается словарь
+    # accept_kwargs(data)
+    # TypeError: accept_kwargs() takes 0 positional arguments but 1 was given
+
+    # Поэтому нужно раскрыть
+    accept_kwargs(**data)
+    # {'kwargs': {'foo': 'test1', 'bar': 'test2', 'baz': 'test3'}}

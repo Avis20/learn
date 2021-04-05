@@ -1,7 +1,128 @@
 
+'''
+https://www.hackerrank.com/challenges/text-wrap/problem
+'''
+
+import textwrap
+
+
+def wrap(string, max_width):
+    return "\n".join(textwrap.wrap(string, width=max_width))
+
+if __name__ == '__main__':
+    # string, max_width = input(), int(input())
+    string, max_width = ('ABCDEFGHIJKLIMNOQRSTUVWXYZ', 4)
+    result = wrap(string, max_width)
+    print(result)
+
+'''
+"""
+https://www.hackerrank.com/challenges/text-alignment/problem
+"""
+
+# Replace all ______ with rjust, ljust or center.
+
+# This must be an odd number
+thickness = int(input())
+thickness = 3
+c = 'H'
+
+# Top Cone
+for i in range(thickness):
+    print((c*i).rjust(thickness-1) + c + (c*i).ljust(thickness-1))
+
+# Top Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2) +
+          (c*thickness).center(thickness*6))
+
+# Middle Belt
+for i in range((thickness+1)//2):
+    print((c*thickness*5).center(thickness*6))
+
+# Bottom Pillars
+for i in range(thickness+1):
+    print((c*thickness).center(thickness*2) +
+          (c*thickness).center(thickness*6))
+
+# Bottom Cone
+for i in range(thickness):
+    print(((c * (thickness-i-1)).rjust(thickness) + c +
+           (c * (thickness-i-1)).ljust(thickness)).rjust(thickness*6))
+
+'''
 
 
 '''
+
+"""
+You are given a string .
+Your task is to find out if the string  contains:
+alphanumeric characters, alphabetical characters, digits,
+lowercase and uppercase characters.
+"""
+
+"""
+Гораздо проще воспользоваться встроенной функцией any
+"""
+if __name__ == '__main__':
+    # s = input()
+    s = 'qA2'
+    print(any(c.isalnum() for c in s))
+    print(any(c.isalpha() for c in s))
+    print(any(c.isdigit() for c in s))
+    print(any(c.islower() for c in s))
+    print(any(c.isupper() for c in s))
+
+
+"""
+Оно работает, и все тесткейсы прошли, но выглядит не очень..
+"""
+# My
+if __name__ == '__main__':
+    # s = input()
+    s = 'qA2'
+    # s = "#$%@^&*kjnk svskjnbui h 4oi3hheuh /dfh uidshvhdsuihv suihc 0hrem89m4c02mw4xo;,wh fwhncoishmxlxfkjsahnxu83v 08 n8OHOIHIOMOICWHOFCMHEOFMCOEJMC0J09C 03J J3L;JMFC3JM3JC3'JIOO9MMJ099U N090N9 OOHOLNHNLLKNLKNKNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333000000000000000000000000000000000000000000000000000000000000000000000000000"
+    # print(True if s.isalnum() else False)
+    for w in s:
+        if w.isalnum():
+            print(True)
+            break
+    else:
+        print(False)
+
+    for w in s:
+        if w.isalpha():
+            print(True)
+            break
+    else:
+        print(False)
+
+    for w in s:
+        if w.isdigit():
+            print(True)
+            break
+    else:
+        print(False)
+
+    for w in s:
+        if w.islower():
+            print(True)
+            break
+    else:
+        print(False)
+
+    for w in s:
+        if w.isupper():
+            print(True)
+            break
+    else:
+        print(False)
+
+'''
+
+'''
+
 def count_substring(string, sub_string):
     count = 0
     for i in range(len(string)):

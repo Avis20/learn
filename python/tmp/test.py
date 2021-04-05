@@ -1,3 +1,6 @@
 
-my_tuple = (1, 2)
-print(hash(my_tuple))
+# s = 'str1'
+# print(any(c.isdigit() for c in s))
+
+
+print(all([]))

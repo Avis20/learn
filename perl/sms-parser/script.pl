@@ -5,11 +5,6 @@ use DateTime;
 
 my @wdays = qw(Понедельник Вторник Среда Четверг Пятница Суббота Воскресенье);
 
-<<<<<<< HEAD
-my %args = map { /^-(file|date_start|date_end)=(.*)/ ? ($1 => $2) : () } @ARGV;
-die "-(file|date_start|date_end)" unless %args;
-
-=======
 my %args = map { /^-(file|date_start|date_end|week|year)=(.*)/ ? ($1 => $2) : () } @ARGV;
 die "-(file|date_start|date_end|week)" unless %args;
 
@@ -18,7 +13,6 @@ my %COLOR = (
     'green'  => "\e[0;32m%s\e[0m\n",
     'red'    => "\e[1;31m%s\e[0m\n",
 );
->>>>>>> eeb003753c31e84a71c5e07856cf62719389c50f
 
 my $DEBUG = $ENV{DEBUG};
 
@@ -33,12 +27,6 @@ unless ( $args{'file'} =~ /^\/home\// ){
 
 open my $fh, $file_path or die "Can't open $file_path: $!";
 
-<<<<<<< HEAD
-my @ds = split('-', $args{'date_start'} );
-my $date_start = DateTime->new( year => $ds[0], month => $ds[1], day => $ds[2] );
-
-my @de = split('-', $args{'date_end'} );
-=======
 my ( @ds, @de );
 if ( $args{'date_start'} && $args{'date_end'} ) {
     @ds = split('-', $args{'date_start'} );
@@ -51,7 +39,6 @@ if ( $args{'date_start'} && $args{'date_end'} ) {
 }
 
 my $date_start = DateTime->new( year => $ds[0], month => $ds[1], day => $ds[2] );
->>>>>>> eeb003753c31e84a71c5e07856cf62719389c50f
 my $date_end = DateTime->new( year => $de[0], month => $de[1], day => $de[2] )->add( days => 1 );
 
 my %total = map { $_ => { wday => $wdays[$_], sum => 0 } } 0..$#wdays;
@@ -65,16 +52,10 @@ while (<$fh>) {
 
     my $wday = $wdays[$date_send->wday()-1];
     my (undef, $s1, $s2) = m/(Платёж|Оплата|Покупка|Выдача|Снятие) ([0-9]( ?[0-9])+)/;
-<<<<<<< HEAD
-    my $sum = $s1;
-    $sum =~ s/\W//g;
-    warn $date_send.' -- '.$wday. " --- ".$sum."\n\t".$_."\n" if $DEBUG;
-=======
     # my (undef, $s1, $s2) = m/(зачислено) ([0-9]( ?[0-9])+)/; # Для зп
     my $sum = $s1;
     $sum =~ s/\W//g;
     warn $date_send.' -- '.$wday. " --- ".( $sum >= 1000 ? sprintf($COLOR{green}, $sum) : $sum )."\n\t".$_."\n" if $DEBUG;
->>>>>>> eeb003753c31e84a71c5e07856cf62719389c50f
     $sum =~ s/р//;
     foreach my $number ( keys %total ){
         $total{$number}->{'sum'} += $sum if $total{$number}->{'wday'} eq $wday;

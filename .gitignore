@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 **/logs
 **/.vagrant
-=======
 **/.idea
-**/logs
-**/.vagrant
 **/python/my_env
 **/__pycache__
->>>>>>> eeb003753c31e84a71c5e07856cf62719389c50f

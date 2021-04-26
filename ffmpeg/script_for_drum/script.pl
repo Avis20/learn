@@ -34,7 +34,11 @@ cmd($command);
 if ( $args{loop} ) {
     my $mp3 = "result/$args{name}.mp3";
     cmd("mv $mp3 $mp3.tmp");
+<<<<<<< HEAD
     my $command = sprintf("cat %s > %s", " $mp3.tmp" x $args{'loop'}, $mp3);
+=======
+    my $command = sprintf("cat%s > %s", " $mp3.tmp" x $args{'loop'}, $mp3);
+>>>>>>> eeb003753c31e84a71c5e07856cf62719389c50f
     cmd($command);
     cmd("rm $mp3.tmp");
 }

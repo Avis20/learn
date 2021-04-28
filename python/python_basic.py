@@ -1,9 +1,21 @@
 
+test = 1
+
+if m := test:
+    print(m)
+    test = 2
+
+print(test)
+
+
+'''
 if __name__ == '__main__':
     list1 = ['test1', 'test2', 'test3']
     first_el = list1.pop(0)
     print(first_el)
     print(list1)
+'''
+
 
 '''
 

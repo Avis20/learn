@@ -1,4 +1,33 @@
 
+"""
+# https://www.hackerrank.com/challenges/python-string-formatting/problem
+'''
+Given an integer, , print the following values for each integer  from  to :
+
+Decimal
+Octal
+Hexadecimal (capitalized)
+Binary
+Function Description
+
+Complete the print_formatted function in the editor below.
+
+print_formatted has the following parameters:
+
+int number: the maximum value to print
+'''
+
+
+def print_formatted(number):
+    delim = len(bin(number)[2:])
+    for i in range(1, number + 1):
+        print(f"{i:>{delim}d} {i:>{delim}o} {i:>{delim}X} {i:>{delim}b}")
+
+
+if __name__ == '__main__':
+    print_formatted(17)
+
+"""
 
 
 

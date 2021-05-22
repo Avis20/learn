@@ -1,4 +1,60 @@
 
+if __name__ == '__main__':
+    print(1)
+
+"""
+# https://www.hackerrank.com/challenges/itertools-product/problem
+"""
+from itertools import product
+'''
+
+# Мое решение
+if __name__ == '__main__':
+    # my_list1 = input().split()
+    # my_list2 = input().split()
+    my_list1, my_list2 = [1,2], [3,4]
+    rr = []
+    for i in product(my_list1, my_list2):
+        rr.append(tuple(map(int, i)))
+    print(*rr)
+'''
+
+'''
+# Не мое решение
+
+if __name__ == '__main__':
+    my_list1 = map(int, input().split())
+    my_list2 = map(int, input().split())
+    print(*product(my_list1, my_list2))
+
+'''
+
+"""
+https://www.hackerrank.com/challenges/capitalize/problem
+
+"""
+'''
+def solve(s):
+    result = ""
+    first = 1
+    for letter in s:
+        if letter.isalpha():
+            if first:
+                letter = letter.capitalize()
+                first = 0
+        elif letter.isdigit():
+            first = 0
+        else:
+            first = 1
+        result += letter
+    return result
+
+
+if __name__ == '__main__':
+    print(solve("hello   word"))
+
+'''
+
 """
 # https://www.hackerrank.com/challenges/python-string-formatting/problem
 '''

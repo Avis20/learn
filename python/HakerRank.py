@@ -1,12 +1,118 @@
 
+"""
+from collections import namedtuple
+
+
+def calc_avg(nrows = 1, fields=[]):
+    Student = namedtuple('students', ",".join(fields))
+    students = []
+    input_data = [['1', '97', 'Raymond', '7'], ['2', '50', 'Steven', '4']]
+    for nrow in range(nrows):
+        data = input_data.pop()
+        # data = input().split()
+        students.append(Student(*data))
+    sum_marks = sum(int(s.MARKS) for s in students)
+    return '{:.2f}'.format(sum_marks / len(students))
+
+
 if __name__ == '__main__':
-    print(1)
+    # nrow = int(input())
+    # fields = input().split()
+    nrow = 2
+    fields = ['ID', 'MARKS', 'NAME', 'CLASS']
+    print(calc_avg(nrow, fields))
+"""
+
+"""
+def average(some_list):
+    uniq_list = set(some_list)
+    return '{:.3f}'.format(sum(uniq_list) / len(uniq_list))
+
+
+if __name__ == '__main__':
+    # size = int(input())
+    # arr = map(int, input().split())
+    arr = [161, 182, 161, 154, 176, 170, 167, 171, 170, 174]
+    result = average(arr)
+    print(result)
+"""
+
+'''
+"""
+https://www.hackerrank.com/challenges/itertools-permutations
+"""
+
+from itertools import permutations
+
+if __name__ == '__main__':
+    string, count = input().split()
+    list_items = list(permutations(string, int(count)))
+    for word in sorted(list_items):
+        print("".join(word))
+
+'''
+
+'''
+"""
+https://www.hackerrank.com/challenges/collections-counter/problem
+
+"""
+
+from collections import Counter
+
+if __name__ == '__main__':
+    n_shoes = input()
+    shoes_list = Counter(map(int, input().split()))
+    n_cust = int(input())
+    amount = 0
+    for _ in range(n_cust):
+        size, price = map(int, input().split())
+        if shoes_list[size]:
+            amount += price
+            shoes_list[size] -= 1
+    print(amount)
+
+'''
+
+'''
+
+"""
+https://www.hackerrank.com/challenges/alphabet-rangoli/problem
+"""
+
+import string
+
+
+def print_rangoli(size):
+    alph = string.ascii_lowercase
+    middle = size * 2 - 2
+    for row in range(0, middle):
+        print(row, end='')
+ 
+    # for row in range(0, (size * 2) - 1):
+    #     for col in range(0, size * 3):
+    #         print(col, end='')
+    #     print(' == ', row)
+
+    # for index in reversed(range(0, size)):
+    #     print(alph[index], '-', end='', sep='')
+    # for index in range(1, size):
+    #     print(alph[index], '-', end='', sep='')
+
+
+if __name__ == '__main__':
+    # n = int(input())
+    n = 3
+    print_rangoli(n)
+
+'''
 
 """
 # https://www.hackerrank.com/challenges/itertools-product/problem
 """
-from itertools import product
+
 '''
+from itertools import product
 
 # Мое решение
 if __name__ == '__main__':

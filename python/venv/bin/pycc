@@ -1,0 +1,3 @@
+#!/home/avis/learn/python/venv/bin/python
+from numba.pycc import main
+main()

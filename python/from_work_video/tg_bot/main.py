@@ -15,6 +15,7 @@ dp = Dispatcher(bot)
 # подключаем логирование в диспатчер
 dp.middleware.setup(LoggingMiddleware())
 
+
 # декоратор который вызовется если сообщение будет текстовое
 @dp.message_handler(content_types=ContentTypes.TEXT)
 async def echo_msg(message: types.message):

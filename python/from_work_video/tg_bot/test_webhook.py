@@ -10,7 +10,7 @@ from aiogram.utils.executor import start_webhook
 import config
 
 # webhook settings
-WEBHOOK_HOST = 'https://e4891526652f.ngrok.io'
+WEBHOOK_HOST = 'https://0dc166fe2bc3.ngrok.io'
 WEBHOOK_PATH = f'/path/to/api/{uuid.uuid4()}'
 WEBHOOK_URL = f"{WEBHOOK_HOST}{WEBHOOK_PATH}"
 
@@ -20,7 +20,7 @@ WEBAPP_PORT = 3001
 
 logging.basicConfig(level=logging.DEBUG)
 
-bot = Bot(token=config.TOKEN)
+bot = Bot(token='1619204043:AAH56vPdnCBvS4P-z8cENZJ0VKXk4bAkOO8')
 dp = Dispatcher(bot)
 dp.middleware.setup(LoggingMiddleware())
 

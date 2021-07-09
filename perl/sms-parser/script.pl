@@ -62,7 +62,7 @@ while (<$fh>) {
     }
 }
 
-say;
+print("\n");
 foreach my $number ( 6,7,0,1,2,3,4,5 ){
     next unless defined $total{$number}->{'sum'};
     printf("%s\t%s\n", $total{$number}->{'wday'}, $total{$number}->{'sum'});
@@ -77,7 +77,7 @@ foreach my $number ( 6,7,0,1,2,3,4,5 ) {
     next unless defined $total{$number}->{'sum'};
     printf("%s\t", $total{$number}->{'sum'});
 }
-say;
+print("\n");
 
 close $fh;
 exit;

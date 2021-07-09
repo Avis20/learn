@@ -18,7 +18,7 @@ from models.base import Base
 # access to the values within the .ini file in use.
 config = context.config
 
-# Interpret the config file for Python logging.
+# Interpret the config file for Python _logging.
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 

@@ -1,9 +1,19 @@
 
+from pprint import pprint
+
+if __name__ == '__main__':
+    test_dict = dict()
+    # test_dict['test']['dsadsa'] = 1
+    test_dict.update({'test': {'test' : 1}})
+    pprint(test_dict)
+
+
+"""
 if __name__ == '__main__':
     x = 10 / 3
     print('{:.2f}'.format(x))
     print(f'{x:.2f}')
-
+"""
 
 """
 import pymongo

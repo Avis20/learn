@@ -16,7 +16,7 @@ response = r.get(URL)
 
 soup = BeautifulSoup(response.content, "html.parser")
 
-results = soup.find_all('div', id="user-repositories-list")
+results = soup.find_all('section', id="user-repositories-list")
 for item in results:
     repos = item.find_all('a')
     for rep in repos:

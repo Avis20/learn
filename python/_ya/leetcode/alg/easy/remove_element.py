@@ -3,20 +3,25 @@ from typing import List
 
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
-        j = 0
-        for i in range(len(nums)):
-            if nums[i] != val:
-                nums[j] = nums[i]
-                j += 1
-        return j
+        i = 0
+        n = len(nums)
+        while n > i:
+            if nums[i] == val:
+                nums[i] = nums[n - 1]
+                n -= 1
+            else:
+                i += 1
+        return n
 
 
 if __name__ == "__main__":
     """
-    Ссылка: https://leetcode.com/problems/remove-element/
-    Дано: Дана последовательность целых чисел nums, и целое число val
-    Необходимо: Удалить все вхождения числа val из последовательности nums на месте.
-    Примечание:
+        Ссылка: https://leetcode.com/problems/remove-element/
+        Дано: Дана последовательность целых чисел nums, и целое число val
+        Необходимо: Удалить все вхождения числа val из последовательности nums на месте.
+        Примечание: Порядок nums при этом может измениться
+        Решение: При встрече нужного эл. - заменяем его на последний и уменьшаем правую границу
+        Сложность алгоритма: O(n)
     """
     solution = Solution()
     # my_list = [3,2,2,3]

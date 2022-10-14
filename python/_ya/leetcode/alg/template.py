@@ -11,6 +11,8 @@ if __name__ == "__main__":
         Дано:
         Необходимо:
         Примечание:
+        Решение: 
+        Сложность алгоритма:
     """
     solution = Solution()
     print(solution.func())

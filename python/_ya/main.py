@@ -1,8 +1,16 @@
-class chain_sum(int):
-    def __call__(self, num=0):
-        return chain_sum(self + num)
 
 
-print(1 + chain_sum(5))  # 6
-print(1 + chain_sum(5)(2))  # 8
-print(1 + chain_sum(5)(100)(-10))  # 96
+test_list = [
+    [1, 2, 3, 4],
+    [5, 6, 7, 8]
+]
+
+for lists in test_list:
+    for number in lists:
+        print(number, end=";")
+    print()
+    # >>> 1;2;3;4;
+    # >>> 5;6;7;8;
+
+print(", ".join(str(number) for lists in test_list for number in lists))
+# >>> 1, 2, 3, 4, 5, 6, 7, 8

@@ -1,6 +1,9 @@
 
 
 
-nums = [1,2,3]
-for i in xrange(len(nums)):
-    print(i)
+s = '(){}'
+test = []
+for c in s:
+    test.append(c)
+
+print(test.index())

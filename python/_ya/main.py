@@ -1,18 +1,16 @@
+from itertools import permutations
 
+# str1 = set(input().strip())
+# str2 = set(input().strip())
 
-test_list = [
-    [1, 2, 3, 4],
-    [5, 6, 7, 8]
-]
+str1 = "hello"
+str2 = "helel"
 
-res = []
-for lists in test_list:
-    for number in lists:
-        res.append(str(number))
-# return ", ".join(res)
-print(", ".join(res))
-    # >>> 1;2;3;4;
-    # >>> 5;6;7;8;
+is_same = 0
+for comb in permutations(str1):
+    print("".join(comb))
+    if "".join(comb) == str2:
+        is_same = 1
+        break
 
-print(", ".join(str(number) for lists in test_list for number in lists))
-# >>> 1, 2, 3, 4, 5, 6, 7, 8
+print(is_same)

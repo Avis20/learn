@@ -1,9 +1,5 @@
 
 
 
-s = '(){}'
-test = []
-for c in s:
-    test.append(c)
-
-print(test.index())
+s = "test"
+print(s.count("t"))

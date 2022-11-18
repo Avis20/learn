@@ -1,10 +1,21 @@
 
+from typing import List
+
 class Solution:
-    def countBits(self, n):
-        memo = [0] * (n+1)
-        for i in range(1, n + 1):
-            memo[i] = memo[i >> 1] + i % 2
-        return memo
+    def countBits(self, n: int) -> List[int]:
+        result = []
+
+        for i in range(n + 1):
+
+            count = 0
+            while i:
+                # Прибавляем последний бит в двоичном числе
+                count += i & 1
+                # Сдвигаем на 1 символ вправа
+                i >>= 1
+            result.append(count)
+
+        return result
 
 if __name__ == "__main__":
     """

@@ -8,34 +8,32 @@ class ListNode:
 
 
 class Solution:
-    def mergeTwoLists(
-        self, l1: Optional[ListNode], l2: Optional[ListNode]
-    ) -> Optional[ListNode]:
-
-        if not l1 and not l2:
-            return None
-        elif not l1 and l2:
-            return l2
-        elif not l2 and l1:
-            return l1
-
+    def mergeTwoLists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        # Создадим фиктивный список чтоб не заморачиваться с if head is None
         head = ListNode(0)
         node = head
-        while l1 or l2:
-            node1 = ListNode(l1.val)
-            node2 = ListNode(l2.val)
-            if node1.val == node2.val or node1.val < node2.val:
-                node.next = node1
-                node.next.next = node2
+        
+        # Пока один из списков не закончится
+        while l1 and l2:
+            # Если в первом списке эл. меньше            
+            if l1.val < l2.val:
+                # Добавляем в новый список
+                node.next = l1
+                # Берем след. из первого списка
+                l1 = l1.next
             else:
-                node.next = node2
-                node.next.next = node1
-            l1 = l1.next if l1 else None
-            l2 = l2.next if l2 else None
-            node = node.next.next
+                # Иначе - 2-й эл. меньше или они равны
+                node.next = l2
+                l2 = l2.next
+            node = node.next
+
+        # Если какой-то список оказался короче - добавим остаток в хвост
+        if l1:
+            node.next = l1
+        if l2:
+            node.next = l2
 
         return head.next
-
 
     def print_llist(self, head):
         node = head
@@ -53,34 +51,23 @@ if __name__ == "__main__":
     """
     solution = Solution()
 
-    l1_node1 = ListNode(1)
-    l1_node2 = ListNode(2)
-    l1_node1.next = l1_node2
+    # Input: head = [1,2,3,4,5]
+    head1 = ListNode(1)
+    prev = head1
+    for i in [2, 4]:
+        node = ListNode(i)
+        prev.next = node
+        prev = node
 
-    l1_node3 = ListNode(4)
-    l1_node2.next = l1_node3
-    head_node1 = l1_node1
+    head2 = ListNode(1)
+    prev = head2
+    for i in [3, 4]:
+        node = ListNode(i)
+        prev.next = node
+        prev = node
 
-    l2_node1 = ListNode(1)
-    l2_node2 = ListNode(3)
-    l2_node1.next = l2_node2
+    last_node = ListNode(5)
 
-    l2_node3 = ListNode(4)
-    l2_node2.next = l2_node3
-    head_node2 = l2_node1
-
-    res = solution.mergeTwoLists(head_node1, head_node2)
-    while res:
-        print(res.val)
-        res = res.next
-
-
-
-    # l2_node1 = ListNode(0)
-    # head_node2 = l2_node1
-
-
-    # res = solution.mergeTwoLists(None, head_node2)
-    # while res:
-    #     print(res.val)
-    #     res = res.next
+    res = solution.mergeTwoLists(head1, head2)
+    print("AAA")
+    solution.print_llist(res)

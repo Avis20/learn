@@ -1,29 +1,50 @@
-
 class Node:
-    def __init__(self, x, next=None):
-        self.val = x
+    def __init__(self, data=None, next=None):
+        self.data = data
         self.next = next
 
-def reverse_llist(head):
-    prev = None
-    curr = head
-    while curr:
-        nxt = curr.next
-        curr.next = prev
-        prev = curr
-        curr = nxt
-    return prev
 
-if __name__ == '__main__':
-    node1 = Node(1)
-    prev = node1
-    for i in range(2, 7):
-        node = Node(i)
-        prev.next = node
-        prev = node
+class CyrcleLinkedList:
+    def __init__(self, nodes: list | None):
+        self.head = None
+        if nodes:
+            node = Node(nodes.pop(0))
+            self.head = node
+            for item in nodes:
+                node.next = Node(item)
+                node = node.next
+            node.next = self.head
 
-    node = reverse_llist(node1)
-    while node:
-        print(node.val)
-        node = node.next
+    def print_list(self, start_point=None):
+        nodes = []
+        for node in self.traverse(start_point):
+            nodes.append(str(node.data))
+        print(" -> ".join(nodes))
 
+    def traverse(self, start_point=None):
+        if start_point is None:
+            start_node = self.head
+        else:
+            start_node = self.find(start_point)
+
+        node = start_node
+        while node and node.next != start_node:
+            yield node
+            node = node.next
+        yield node
+
+    def find(self, target) -> Node | None:
+        node = self.head
+        while node:
+            if node.data == target:
+                return node
+            node = node.next
+        return None
+
+
+if __name__ == "__main__":
+    cllist = CyrcleLinkedList([1, 2, 3, 4])
+    cllist.print_list()
+    cllist.print_list(2)
+    cllist.print_list(4)
+    # print(cllist)

@@ -1,50 +1,26 @@
-class Node:
-    def __init__(self, data=None, next=None):
-        self.data = data
-        self.next = next
+class Solution:
+    def findMaxAverage(self, nums: list[int], k: int) -> float:
+        start = 0
+        end = k
+        total_sum = sum(nums[start:end])
+        total_max = total_sum
+
+        while len(nums) > end:
+            total_sum -= nums[start]
+            total_sum += nums[end]
+
+            if total_sum > total_max:
+                total_max = total_sum
+
+            start += 1
+            end += 1
+
+        return total_max / k
 
 
-class CyrcleLinkedList:
-    def __init__(self, nodes: list | None):
-        self.head = None
-        if nodes:
-            node = Node(nodes.pop(0))
-            self.head = node
-            for item in nodes:
-                node.next = Node(item)
-                node = node.next
-            node.next = self.head
-
-    def print_list(self, start_point=None):
-        nodes = []
-        for node in self.traverse(start_point):
-            nodes.append(str(node.data))
-        print(" -> ".join(nodes))
-
-    def traverse(self, start_point=None):
-        if start_point is None:
-            start_node = self.head
-        else:
-            start_node = self.find(start_point)
-
-        node = start_node
-        while node and node.next != start_node:
-            yield node
-            node = node.next
-        yield node
-
-    def find(self, target) -> Node | None:
-        node = self.head
-        while node:
-            if node.data == target:
-                return node
-            node = node.next
-        return None
-
-
-if __name__ == "__main__":
-    cllist = CyrcleLinkedList([1, 2, 3, 4])
-    cllist.print_list()
-    cllist.print_list(2)
-    cllist.print_list(4)
-    # print(cllist)
+s = Solution()
+nums, k = [1, 12, -5, -6, 50, 3], 4
+# nums, k = [4,0,4,3,3], 5
+nums, k = [7, 4, 5, 8, 8, 3, 9, 8, 7, 6], 7
+nums, k = [5], 1
+print("TOTALLLL =", s.findMaxAverage(nums, k))

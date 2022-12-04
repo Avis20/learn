@@ -6,34 +6,8 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def isPalindrome(self, head: Optional[ListNode]) -> bool:
-        mid = self.middleLinkedList(head)
-        rev = self.reverseLinkedList(mid)
-        curr = head
-        while rev:
-            if rev.val != curr.val:
-                return False
-            curr = curr.next
-            rev = rev.next
-        return True
-
-    def middleLinkedList(self, head):
-        fast = slow = head
-        while fast and fast.next:
-            fast = fast.next.next
-            slow = slow.next
-        return slow
-    
-    def reverseLinkedList(self, head):
-        prev = None
-        curr = head
-        while curr:
-            nxt = curr.next
-            curr.next = prev
-            prev = curr
-            curr = nxt
-        return prev
-
+    def func(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        pass
 
 
     def print_llist(self, head):
@@ -46,9 +20,9 @@ class Solution:
 
 if __name__ == "__main__":
     """
-        Ссылка: https://leetcode.com/problems/palindrome-linked-list/description/
+        Ссылка: 
         Дано: Дано начало `head` связанного списка
-        Необходимо: Проверить является ли связанный список палиндромом
+        Необходимо: 
         Примечание:
         Решение: 
         Сложность алгоритма:
@@ -58,12 +32,12 @@ if __name__ == "__main__":
     # Input: head = [1,2,3,4,5]
     head = ListNode(1)
     prev = head
-    for i in [2,3,4,4,3,2,1]:
+    for i in range(2, 6):
         node = ListNode(i)
         prev.next = node
         prev = node
 
     solution = Solution()
-    solution.print_llist(head)
-    res = solution.isPalindrome(head)
-    print(res)
+    res = solution.func(head)
+    print()
+    solution.print_llist(res)

@@ -1,0 +1,22 @@
+[[package]]
+name = "tools"
+version = "0.1.0"
+description = ""
+category = "main"
+optional = false
+python-versions = "^3.10"
+develop = false
+
+[package.source]
+type = "git"
+url = "git@github.com:Avis20/tools-py.git"
+reference = "main"
+resolved_reference = "17e72541588b479cf34b91ce35f161a17d3c9474"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.10"
+content-hash = "287832eaa6122285ecbbdd2ba89d9da9de6d61fa91324c6e506abdd11040c6d2"
+
+[metadata.files]
+tools = []

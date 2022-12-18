@@ -43,4 +43,4 @@ if __name__ == "__main__":
     # node7 = TreeNode(7)
     # node6.left = node7
 
-    print(solution.postorderTraversal(root))
+    print(solution.func(root))

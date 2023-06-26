@@ -1,46 +1,25 @@
-
-
 class Solution:
-    def findDisappearedNumbers(self, nums: list[int]):
-        n = len(nums)
-        i = 0
-        while i < len(nums):
-            corr_pos = nums[i] - 1
-            if nums[i] != nums[corr_pos]:
-                nums[i], nums[corr_pos] = nums[corr_pos], nums[i]
-            else:
+    def isPalindrome(self, s: str) -> bool:
+        i, j = 0, len(s) - 1
+        while i < j:
+            c1 = s[i].lower()
+            c2 = s[j].lower()
+            if not c1.isalnum():
                 i += 1
+                continue
+            if not c2.isalnum():
+                j -= 1
+                continue
+            if c1 != c2:
+                return False
+            i += 1
+            j -= 1
+        return True
 
-        result = []
-        for i in range(n):
-            if nums[i] != i + 1:
-                result.append(i + 1)
-        return result
-
-
-    def findDisappearedNumbers2(self, nums: list[int]):
-        n = len(nums)
-        left, right = 0, n - 1
-        while left <= right:
-            num = nums[left]
-            if num != left + 1:
-                index = num - 1
-                if nums[left] != nums[index]:
-                    nums[left], nums[index] = nums[index], nums[left]
-                else:
-                    nums[left], nums[right] = nums[right], nums[left]
-                    right -= 1
-            else:
-                left += 1
-        
-        result = []
-        for i in range(n):
-            if nums[i] != i + 1:
-                result.append(i + 1)
-        return result
-
-
-s = Solution()
-nums = [4,3,2,7,8,2,3,1]
-# nums = [1,1]
-print(s.findDisappearedNumbers(nums))
+if __name__ == "__main__":
+    """
+    
+    """
+    solution = Solution()
+    s = "A man, a plan, a canal: Panama"
+    print(solution.isPalindrome(s))

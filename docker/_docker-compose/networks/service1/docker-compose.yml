@@ -1,0 +1,27 @@
+# networks/service1/docker-compose.yml
+
+version: '3.8'
+
+services: 
+
+  service1: 
+    image: goodsmileduck/redis-cli
+    container_name: my-service1
+    command: sleep infinity
+    networks:
+     - my-network
+     - service1-network
+
+  service1-redis:
+    container_name: service1-redis
+    image: redis:7.0.8-alpine
+    restart: unless-stopped
+    networks:
+      - service1-network
+
+networks:
+  service1-network:
+    name: service1-network
+  my-network:
+    external:
+      name: external-example

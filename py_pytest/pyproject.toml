@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "py-pytest"
+version = "0.1.0"
+description = ""
+authors = ["Орлов Ярослав <y.orlov@fonmix.ru>"]
+readme = "README.md"
+packages = [{include = "py_pytest"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^7.4.0"
+pydantic = "^1.10.9"
+pytest-mock = "^3.11.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

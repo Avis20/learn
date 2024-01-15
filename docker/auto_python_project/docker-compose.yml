@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+
+  app-container:
+    container_name: app-container
+    build:
+      context: .
+      dockerfile: docker/backend/dev.Dockerfile

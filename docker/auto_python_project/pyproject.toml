@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "auto-python-project"
+version = "0.1.0"
+description = ""
+authors = ["Орлов Ярослав <y.orlov@fonmix.ru>"]
+readme = "README.md"
+packages = [{include = "auto_python_project"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.103.1"
+
+
+[tool.poetry.group.tests.dependencies]
+pytest = "^7.4.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
